@@ -13,6 +13,7 @@ import { SiteNav } from "@/components/SiteNav";
 export default function Home() {
   return (
     <main>
+      {/* teste */}
       <SiteNav />
       <Hero />
       <About />
