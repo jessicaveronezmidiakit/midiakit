@@ -239,9 +239,23 @@ export function Measures() {
         </Reveal>
       </div>
 
-      <div className="mx-auto hidden max-w-7xl px-10 pt-28 pb-14 lg:block">
+      <div className="mx-auto hidden max-w-7xl px-10 pt-28 lg:block">
         <Reveal>
           <TechSheet />
+        </Reveal>
+      </div>
+
+      <div className="px-6 pt-12 pb-20 sm:px-10 lg:mx-auto lg:flex lg:max-w-7xl lg:justify-end lg:px-10 lg:pt-10 lg:pb-24">
+        <Reveal>
+          <a
+            href="#contato"
+            className="group inline-flex items-center gap-3 rounded-full bg-marsala px-6 py-3 text-sm font-semibold text-offwhite transition-colors hover:bg-ink"
+          >
+            Entrar em contato
+            <span aria-hidden className="transition-transform group-hover:translate-x-1">
+              →
+            </span>
+          </a>
         </Reveal>
       </div>
     </section>

@@ -9,7 +9,7 @@ function NetworkPanel({ network }: { network: NetworkKey }) {
   const data = social[network];
   const profile = contact[network];
   return (
-    <div className="border-t border-offwhite/20 pt-7">
+    <div className="pt-7">
       <div className="flex items-center justify-between gap-4">
         <p className="flex items-center gap-2.5 text-offwhite/75">
           <SocialIcon network={network} className="size-[18px]" />

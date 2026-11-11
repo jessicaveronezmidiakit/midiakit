@@ -23,7 +23,7 @@ Em produção, defina `NEXT_PUBLIC_SITE_URL` (ex.: `https://midiakit.jessicavero
 
 | Pasta | Origem |
 | --- | --- |
-| `public/generated/` | Gerados no **Magnific** (MCP): fundos `velvet-results`, `satin-about`, `satin-formats`, todos sem fitas ou laços (`satin-about` e `satin-formats` têm versão vertical `*-mobile`, usada abaixo de 1024 px), e `velvet-hero`, usado só como imagem de Open Graph; e recortes `cutout-*` (fundo removido no Magnific a partir das fotos reais). |
+| `public/generated/` | Gerados no **Magnific** (MCP): fundos `velvet-results`, `satin-about` e `satin-formats` (este com versão vertical `satin-formats-mobile`, usada abaixo de 1024 px), todos sem fitas ou laços, e `velvet-hero`, usado só como imagem de Open Graph; e recortes `cutout-*` (fundo removido no Magnific a partir das fotos reais). |
 | `public/photos/` | Fotos reais da creator (`informações/imagens/`), redimensionadas para WebP. |
 | `public/marcas/` | Logos das marcas parceiras, em WebP com fundo transparente. |
 
