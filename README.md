@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mídia Kit · Jéssica Veronez
 
-## Getting Started
+Landing page de mídia kit em Next.js 16 (App Router + TypeScript + Tailwind 4).
 
-First, run the development server:
+## Rodar
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # build de produção (página 100% estática)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Em produção, defina `NEXT_PUBLIC_SITE_URL` (ex.: `https://midiakit.jessicaveronez.com.br`) para as imagens de Open Graph.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Onde editar
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Conteúdo** (textos, números, cases, entregas, marcas, medidas, contato): `src/content/midia-kit.ts`
+  - Os valores não aparecem no site: cada entrega em `deliverables` abre o WhatsApp com uma mensagem pedindo o valor daquele formato.
+- **Paleta**: variáveis CSS em `src/app/globals.css` (`--ink`, `--wine`, `--marsala`, `--offwhite`, `--sand`, `--accent` amarelo bebê).
+- **Seções**: `src/components/sections/*`, montadas em `src/app/page.tsx`.
 
-## Learn More
+## Assets
 
-To learn more about Next.js, take a look at the following resources:
+| Pasta | Origem |
+| --- | --- |
+| `public/generated/` | Gerados no **Magnific** (MCP): fundos `velvet-results`, `satin-about`, `satin-formats`, todos sem fitas ou laços (`satin-about` e `satin-formats` têm versão vertical `*-mobile`, usada abaixo de 1024 px), e `velvet-hero`, usado só como imagem de Open Graph; e recortes `cutout-*` (fundo removido no Magnific a partir das fotos reais). |
+| `public/photos/` | Fotos reais da creator (`informações/imagens/`), redimensionadas para WebP. |
+| `public/marcas/` | Logos das marcas parceiras, em WebP com fundo transparente. |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Os originais em alta ficam em `informações/imagens/` e no projeto *Personal* da conta Magnific.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Pendências
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- O levantamento não trouxe frase de impacto, diferenciais nem vídeos de melhor resultado; essas seções foram omitidas.
+# midiakit
