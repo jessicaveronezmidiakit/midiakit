@@ -15,7 +15,8 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  // `URL` é definida pelo Netlify no build com o endereço principal do site.
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? process.env.URL ?? "http://localhost:3000"),
   title: "Jéssica Veronez · Mídia Kit",
   description:
     "Mídia kit de Jéssica Veronez, criadora de conteúdo de beleza, moda e lifestyle em Curitiba. Números, público, cases, formatos e contato comercial.",
