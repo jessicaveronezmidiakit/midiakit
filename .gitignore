@@ -43,7 +43,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# atalho para references/videos (criado por scripts/link-videos.mjs)
+# atalho local para os vídeos, quando a pasta existir
 /public/arquivos
 
 # vídeos originais ficam fora do Git: vários passam de 100 MB
