@@ -392,3 +392,5 @@ section[id],header[id]{scroll-margin-top:56px}
   .videos-grid{grid-template-columns:repeat(2,1fr)}
 }
 
+#nl-badge-frame,iframe[title="Powered by Netlify"]{display:none!important}
+
