@@ -66,7 +66,13 @@ export function Contact() {
               </li>
             ))}
           </ol>
-          {shots.length === 0 ? <p className="empty">Nada adicionado ainda — escolha as entregas acima.</p> : null}
+          {shots.length === 0 ? (
+            <p className="empty">
+              Nada adicionado ainda
+              <br />
+              escolha as entregas acima.
+            </p>
+          ) : null}
           <div className="sl-actions">
             <a className="btn" href={whatsappLink(message)} target="_blank" rel="noopener noreferrer">
               Enviar no WhatsApp
