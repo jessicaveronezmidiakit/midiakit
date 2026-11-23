@@ -1,94 +1,127 @@
-import type { ReactNode } from "react";
-import { contact, creator } from "@/content/midia-kit";
-import { Reveal } from "@/components/Reveal";
+"use client";
 
-const [emailUser, emailDomain] = contact.email.split("@");
-
-const channels: { label: string; value: string; display?: ReactNode; href: string }[] = [
-  { label: "WhatsApp", value: contact.whatsappDisplay, href: contact.whatsappUrl },
-  {
-    label: "E-mail",
-    value: contact.email,
-    display: (
-      <>
-        {emailUser}@<wbr />
-        {emailDomain}
-      </>
-    ),
-    href: `mailto:${contact.email}`,
-  },
-  { label: "Instagram", value: contact.instagram.handle, href: contact.instagram.url },
-  { label: "TikTok", value: contact.tiktok.handle, href: contact.tiktok.url },
-];
+import { contact, creator, whatsappLink } from "@/content/midia-kit";
+import { useShotList } from "@/components/site/ShotList";
+import { InstagramIcon, TikTokIcon } from "@/components/sections/Hero";
 
 export function Contact() {
+  const { shots, remove, message, toast } = useShotList();
+  const mail = `mailto:${contact.email}?subject=${encodeURIComponent("Parceria – pedido de orçamento")}&body=${encodeURIComponent(message)}`;
   return (
-    <section id="contato" className="grain relative isolate overflow-hidden bg-ink text-offwhite">
-      <div className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_top,rgba(122,35,53,0.45),transparent_60%)]" />
-
-      <div className="mx-auto max-w-7xl px-6 pt-28 pb-10 sm:px-10 lg:pt-40">
-        <Reveal>
-          <p className="eyebrow flex items-center gap-3 text-accent">
-            <span className="font-display text-[0.8rem] tracking-normal">07&nbsp;&nbsp;&nbsp;•</span>
-            Vamos criar juntas
-          </p>
-          <h2 className="mt-6 font-display text-[clamp(3.5rem,10vw,9rem)] leading-[0.88] tracking-tight">
-            {creator.firstName} <span className="italic">{creator.lastName}</span>
-          </h2>
-          <div className="mt-10 flex flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-xl text-lg leading-relaxed text-offwhite/80">
-              Atendimento direto, sem agência. Conte sobre sua marca e o objetivo da campanha.
-            </p>
-            <a
-              href={contact.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group inline-flex shrink-0 items-center gap-3 self-start rounded-full bg-offwhite py-2 pr-2 pl-7 text-sm font-semibold tracking-wide text-ink transition-colors hover:bg-accent sm:self-auto"
-            >
-              Chamar no WhatsApp
-              <span
-                aria-hidden
-                className="grid size-11 place-items-center rounded-full bg-marsala text-offwhite transition-transform group-hover:translate-x-1"
-              >
-                →
-              </span>
+    <section className="contact" id="contato">
+      <div className="pic">
+        <div className="pop tinted">
+          <span className="frame" />
+          <img className="cut" src="/generated/cutout-closet-v2.webp" alt="Jéssica Veronez de blazer off-white segurando uma jaqueta de couro" />
+        </div>
+      </div>
+      <div className="txt light">
+        <p className="kicker" style={{ color: "var(--muted-light)" }}>
+          07 · vamos criar juntas
+        </p>
+        <h2 className="h">
+          Vamos criar
+          <br />
+          algo <em>juntas?</em>
+        </h2>
+        <p className="note">Atendimento direto, sem agência. Conte sobre sua marca e o objetivo da campanha.</p>
+        <ul className="links">
+          <li>
+            <a href={contact.whatsappUrl} target="_blank" rel="noopener noreferrer">
+              <WhatsIcon />
+              {contact.whatsappDisplay}
             </a>
+          </li>
+          <li>
+            <a href={`mailto:${contact.email}`}>
+              <MailIcon />
+              {contact.email}
+            </a>
+          </li>
+          <li>
+            <a href={contact.instagram.url} target="_blank" rel="noopener noreferrer">
+              <InstagramIcon />
+              {contact.instagram.handle}
+            </a>
+          </li>
+          <li>
+            <a href={contact.tiktok.url} target="_blank" rel="noopener noreferrer">
+              <TikTokIcon />
+              {contact.tiktok.handle}
+            </a>
+          </li>
+        </ul>
+        <div className="shotlist">
+          <div className="sl-head">
+            <span>Sua lista</span>
+            <span>Campanha 01 · Briefing</span>
           </div>
-        </Reveal>
-
-        <Reveal delay={150}>
-          <ul className="mt-16 grid gap-px overflow-hidden border border-offwhite/15 bg-offwhite/15 sm:grid-cols-2 lg:grid-cols-[1fr_1.7fr_1fr_1fr]">
-            {channels.map((channel) => {
-              const external = channel.href.startsWith("http");
-              return (
-                <li key={channel.label}>
-                  <a
-                    href={channel.href}
-                    aria-label={`${channel.label}: ${channel.value}`}
-                    target={external ? "_blank" : undefined}
-                    rel={external ? "noopener noreferrer" : undefined}
-                    className="group flex h-full flex-col justify-between gap-6 bg-ink/80 p-6 transition-colors hover:bg-wine/90"
-                  >
-                    <span className="eyebrow text-offwhite/50">{channel.label}</span>
-                    <span className="text-lg text-offwhite transition-colors [overflow-wrap:anywhere] group-hover:text-accent">
-                      {channel.display ?? channel.value}
-                    </span>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </Reveal>
-
-        <footer className="mt-20 flex flex-col justify-between gap-4 border-t border-offwhite/10 pt-6 text-xs text-offwhite/45 sm:flex-row sm:items-center">
-          <p>
-            {creator.name} · {creator.city} · Mídia Kit 2026
-          </p>
-          <a href="#top" className="self-start transition-colors hover:text-offwhite sm:self-auto">
-            Voltar ao topo ↑
-          </a>
-        </footer>
+          <ol>
+            {shots.map((item, index) => (
+              <li key={`${item}-${index}`}>
+                <span>{item}</span>
+                <button type="button" aria-label={`Remover ${item}`} onClick={() => remove(index)}>
+                  ×
+                </button>
+              </li>
+            ))}
+          </ol>
+          {shots.length === 0 ? <p className="empty">Nada adicionado ainda — escolha as entregas acima.</p> : null}
+          <div className="sl-actions">
+            <a className="btn" href={whatsappLink(message)} target="_blank" rel="noopener noreferrer">
+              Enviar no WhatsApp
+            </a>
+            <a className="btn ghost" href={mail}>
+              Enviar por e-mail
+            </a>
+            <button
+              className="btn ghost"
+              type="button"
+              onClick={async () => {
+                try {
+                  await navigator.clipboard.writeText(contact.email);
+                  toast("E-mail copiado");
+                } catch {
+                  toast(contact.email);
+                }
+              }}
+            >
+              Copiar e-mail
+            </button>
+          </div>
+        </div>
       </div>
     </section>
+  );
+}
+
+function WhatsIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <path d="M4 20l1.3-4A8 8 0 1 1 8 19z" />
+      <path d="M9 9.5c.3 2 2.5 4.2 4.5 4.5l1-1.2 2 .9c-.2 1.3-1.2 2-2.3 1.8C11 15 9 13 8.5 10.8 8.3 9.7 9 8.7 10.3 8.5l.9 2z" />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 7 9 6 9-6" />
+    </svg>
+  );
+}
+
+export function Footer() {
+  return (
+    <footer>
+      <div className="wrap">
+        <span>
+          {creator.name} · {creator.city} · Mídia Kit 2026
+        </span>
+        <a href="#top">Voltar ao topo ↑</a>
+      </div>
+    </footer>
   );
 }

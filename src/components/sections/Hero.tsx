@@ -1,104 +1,140 @@
-import Image from "next/image";
-import { creator, navLinks, results, social } from "@/content/midia-kit";
-const keyStats = [
-  { value: social.instagram.followers, label: "seguidores no Instagram" },
-  { value: social.tiktok.followers, label: "seguidores no TikTok" },
-  { value: creator.brandsServed, label: "marcas atendidas" },
-  { value: `+${results.gmv}`, label: "GMV médio · 6 meses" },
+import { contact, creator, results, social } from "@/content/midia-kit";
+
+const stats = [
+  { value: social.instagram.followers, label: "Instagram" },
+  { value: social.tiktok.followers, label: "TikTok" },
+  { value: creator.brandsServed, label: "Marcas" },
+  { value: results.gmv, label: "faturamento · 6 meses" },
 ];
 
 export function Hero() {
   return (
-    <section id="top" className="grain relative isolate flex min-h-[100svh] overflow-hidden bg-ink text-offwhite">
-      <div className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_top,rgba(122,35,53,0.45),transparent_60%)]" />
-
-      <p
-        aria-hidden
-        className="animate-hero-fade pointer-events-none absolute inset-x-0 top-[15svh] -z-10 select-none text-center font-display text-[19vw] leading-none font-black whitespace-nowrap text-offwhite/[0.07] uppercase lg:inset-x-auto lg:top-1/2 lg:left-[0.5vw] lg:-translate-y-1/2 lg:rotate-180 lg:text-[min(19svh,13vw)] lg:[writing-mode:vertical-rl]"
-      >
-        {creator.lastName}
-      </p>
-
-      <div className="animate-hero-rise absolute right-[-18%] bottom-0 -z-10 h-[78svh] w-auto sm:right-[-4%] lg:right-[8%] lg:h-[92svh]">
-        <Image
-          src="/generated/cutout-trench-v2.webp"
-          alt="Jéssica Veronez de trench coat caramelo, braços cruzados"
-          width={912}
-          height={1368}
-          preload
-          sizes="(min-width: 1024px) 40vw, 70vw"
-          className="h-full w-auto object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.45)]"
-        />
-      </div>
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-3/5 bg-gradient-to-t from-ink via-ink/75 to-transparent lg:hidden" />
-
-      <p
-        aria-hidden
-        className="eyebrow absolute top-1/2 right-5 hidden -translate-y-1/2 rotate-180 text-offwhite/35 [writing-mode:vertical-rl] lg:block"
-      >
-        Beleza · Moda · Lifestyle — {creator.city}
-      </p>
-
-      <div className="relative mx-auto flex w-full max-w-7xl flex-col justify-between px-6 pt-8 pb-12 sm:px-10 lg:pb-10">
-        <header className="flex items-center justify-between gap-8">
-          <span className="font-display text-2xl italic">JV</span>
-          <nav aria-label="Seções do mídia kit" className="hidden lg:block">
-            <ul className="flex items-center gap-8 text-[13px] text-offwhite/65">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <a href={link.href} className="transition-colors hover:text-offwhite">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <span className="eyebrow text-offwhite/70">Mídia Kit · 2026</span>
-        </header>
-
-        <div className="max-w-xl pt-[34svh] sm:pt-0">
-          <p className="eyebrow flex items-center gap-3 text-accent">
-            <span aria-hidden className="h-px w-8 bg-current opacity-60" />
-            {creator.role}
-          </p>
-          <h1 className="mt-5 font-display text-[clamp(4rem,min(11vw,15svh),9.5rem)] leading-[0.86] tracking-tight">
-            {creator.firstName}
-            <br />
-            <span className="italic">{creator.lastName}</span>
-          </h1>
-          <p className="mt-8 max-w-md text-lg leading-relaxed text-offwhite/85 sm:text-xl">
-            Estilo com verdade: curadoria honesta de moda e beleza para mulheres que querem se
-            sentir bem com quem são.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center gap-6">
-            <a
-              href="#contato"
-              className="group inline-flex items-center gap-3 rounded-full bg-offwhite px-7 py-4 text-sm font-semibold tracking-wide text-ink transition-colors hover:bg-accent"
-            >
-              Fechar uma parceria
-              <span aria-hidden className="transition-transform group-hover:translate-x-1">
-                →
-              </span>
-            </a>
-            <a
-              href="#redes"
-              className="text-sm font-medium text-offwhite/80 underline decoration-offwhite/30 underline-offset-8 transition-colors hover:text-offwhite hover:decoration-accent"
-            >
-              Ver números
-            </a>
-          </div>
+    <header className="hero dark" id="top">
+      <div className="wrap">
+        <div className="hero-visual">
+        <div className="pop">
+          <span className="frame" />
+          <img className="cut" src="/generated/cutout-trench-v2.webp" alt="Jéssica Veronez de trench coat caramelo, braços cruzados" />
+          <span className="note n1" aria-hidden="true">
+            estilo com verdade
+            <Arrow />
+          </span>
+          <span className="note n2" aria-hidden="true">
+            <Arrow flip="x" />
+            {creator.city}
+          </span>
+          <span className="note n3" aria-hidden="true">
+            formada em imagem & estilo
+            <Arrow flip="y" />
+          </span>
+          <span className="bag-anchor" aria-hidden="true" />
         </div>
-
-        <dl className="hidden max-w-2xl grid-cols-4 divide-x divide-offwhite/15 border-t border-offwhite/15 pt-6 lg:grid">
-          {keyStats.map((stat) => (
-            <div key={stat.label} className="px-6 first:pl-0">
-              <dt className="sr-only">{stat.label}</dt>
-              <dd className="font-display text-3xl whitespace-nowrap text-offwhite">{stat.value}</dd>
-              <dd className="mt-1.5 text-xs leading-snug text-offwhite/55">{stat.label}</dd>
-            </div>
-          ))}
-        </dl>
+        <Stats className="stats-side" />
+        </div>
+        <div>
+          <p className="kicker">beleza · moda · lifestyle</p>
+          <p className="hi">
+            Oi, eu sou a <span>Jéssica Veronez</span>
+          </p>
+          <h1>
+            Criadora de conteúdo
+            <br />
+            de beleza, moda <em>&amp;</em> lifestyle
+          </h1>
+          <p className="lead">
+            Estilo com verdade: curadoria honesta de moda e beleza para mulheres que querem se sentir bem com quem são.
+          </p>
+          <Stats className="stats-flow" />
+          <ul className="contact-list">
+            <li>
+              <a href={`mailto:${contact.email}`}>
+                <MailIcon />
+                {contact.email}
+              </a>
+            </li>
+            <li>
+              <span>
+                <PinIcon />
+                {creator.city}
+              </span>
+            </li>
+            <li>
+              <a href={contact.instagram.url} target="_blank" rel="noopener noreferrer">
+                <InstagramIcon />
+                {contact.instagram.handle}
+              </a>
+            </li>
+            <li>
+              <a href={contact.tiktok.url} target="_blank" rel="noopener noreferrer">
+                <TikTokIcon />
+                {contact.tiktok.handle}
+              </a>
+            </li>
+          </ul>
+          <a className="btn" href="#contato">
+            Fechar uma parceria
+          </a>
+        </div>
       </div>
-    </section>
+    </header>
+  );
+}
+
+function Stats({ className }: { className: string }) {
+  return (
+    <div className={`stats ${className}`}>
+      {stats.map((stat) => (
+        <div key={stat.label}>
+          <b>{stat.value}</b>
+          <span>{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function Arrow({ flip }: { flip?: "x" | "y" }) {
+  return (
+    <svg className={`arr${flip === "x" ? " flip-x" : ""}${flip === "y" ? " flip-y" : ""}`} viewBox="0 0 40 32" aria-hidden="true">
+      <path d="M3 5C14 4 26 10 32 24" />
+      <path d="M25 21l7 4 2-8" />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 7 9 6 9-6" />
+    </svg>
+  );
+}
+
+function PinIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z" />
+      <circle cx="12" cy="9" r="2.5" />
+    </svg>
+  );
+}
+
+export function InstagramIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function TikTokIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" aria-hidden="true">
+      <path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" />
+      <path d="M14 3c.4 2.6 2.2 4.4 5 4.6" />
+    </svg>
   );
 }

@@ -1,72 +1,107 @@
 import { contact, metricsPeriod, social, totalFollowers } from "@/content/midia-kit";
-import { Reveal } from "@/components/Reveal";
-import { SectionTitle } from "@/components/SectionTitle";
-import { SocialIcon } from "@/components/SocialIcon";
+import { InstagramIcon, TikTokIcon } from "@/components/sections/Hero";
 
-type NetworkKey = keyof typeof social;
+const screens = [
+  "/photos/h-18.webp",
+  "/photos/h-13.webp",
+  "/photos/h-2.webp",
+  "/photos/h-4.webp",
+  "/photos/h-17.webp",
+  "/photos/h-15.webp",
+  "/photos/h-20.webp",
+  "/photos/h-7.webp",
+];
 
-function NetworkPanel({ network }: { network: NetworkKey }) {
-  const data = social[network];
-  const profile = contact[network];
+export function Social() {
+  const instagram = social.instagram.metrics;
+  const tiktok = social.tiktok.metrics;
   return (
-    <div className="pt-7">
-      <div className="flex items-center justify-between gap-4">
-        <p className="flex items-center gap-2.5 text-offwhite/75">
-          <SocialIcon network={network} className="size-[18px]" />
-          <span className="eyebrow">{data.label}</span>
+    <section className="light" id="redes">
+      <div className="wrap">
+        <p className="kicker center" style={{ color: "var(--muted-light)" }}>
+          02 · alcance
         </p>
-        <a
-          href={profile.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-offwhite/70 transition-colors hover:text-accent"
-        >
-          {profile.handle}
-        </a>
+        <h2 className="h center">
+          Redes <em>sociais</em>
+        </h2>
+        <p className="total">
+          <b>{totalFollowers}</b> seguidores somados · métricas dos {metricsPeriod.toLowerCase()}
+          <span className="swipe-hint"> · deslize para o lado →</span>
+        </p>
+        <div className="jump">
+          <a href="#rede-instagram">Instagram</a>
+          <a href="#rede-tiktok">TikTok</a>
+        </div>
+
+        <Network
+          id="rede-instagram"
+          name="instagram"
+          followers={social.instagram.followers}
+          href={contact.instagram.url}
+          handle={contact.instagram.handle}
+          metrics={instagram}
+          offset={0}
+        />
+        <Network
+          id="rede-tiktok"
+          name="tiktok"
+          followers={social.tiktok.followers}
+          href={contact.tiktok.url}
+          handle={contact.tiktok.handle}
+          metrics={tiktok}
+          offset={4}
+        />
       </div>
-      <p className="mt-6 font-display text-7xl leading-none text-offwhite sm:text-8xl">{data.followers}</p>
-      <p className="mt-2 text-sm text-offwhite/55">seguidores</p>
-      <dl className="mt-9 grid grid-cols-2 border-t border-offwhite/10">
-        {data.metrics.map((metric, index) => (
-          <div
-            key={metric.label}
-            className={`border-b border-offwhite/10 py-5 ${index % 2 === 0 ? "pr-5" : "border-l pl-5"}`}
-          >
-            <dt className="sr-only">{metric.label}</dt>
-            <dd className="font-display text-3xl text-accent">{metric.value}</dd>
-            <dd className="mt-1 text-[13px] leading-snug text-offwhite/60">{metric.label}</dd>
-          </div>
-        ))}
-      </dl>
-    </div>
+    </section>
   );
 }
 
-export function Social() {
+function Network({
+  id,
+  name,
+  followers,
+  href,
+  handle,
+  metrics,
+  offset,
+}: {
+  id: string;
+  name: string;
+  followers: string;
+  href: string;
+  handle: string;
+  metrics: { value: string; label: string; cap: string }[];
+  offset: number;
+}) {
   return (
-    <section id="redes" className="grain relative isolate overflow-hidden bg-ink text-offwhite">
-      <div className="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_top,rgba(122,35,53,0.45),transparent_60%)]" />
-
-      <div className="mx-auto max-w-7xl px-6 pt-24 pb-6 sm:px-10 lg:py-32">
-        <Reveal className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-          <SectionTitle index="02&nbsp;&nbsp;&nbsp;•" eyebrow="Alcance" title="Redes sociais" tone="light" />
-          <div className="sm:text-right">
-            <p className="font-display text-3xl text-offwhite">
-              {totalFollowers} <span className="text-lg text-offwhite/60 italic">seguidores somados</span>
-            </p>
-            <p className="mt-1 text-xs tracking-wide text-offwhite/50">Métricas dos {metricsPeriod.toLowerCase()}</p>
-          </div>
-        </Reveal>
-
-        <div className="mt-16 grid gap-14 lg:grid-cols-2 lg:gap-x-20 xl:gap-x-28">
-          <Reveal>
-            <NetworkPanel network="instagram" />
-          </Reveal>
-          <Reveal delay={150}>
-            <NetworkPanel network="tiktok" />
-          </Reveal>
+    <div className="cat" id={id}>
+      <div className="cat-head">
+        <h3>{name}</h3>
+        <div className="big">
+          <b>{followers}</b>
+          <span>seguidores</span>
         </div>
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          {handle}
+        </a>
       </div>
-    </section>
+      <div className="phones">
+        {metrics.map((metric, index) => (
+          <div className="vid" key={metric.cap}>
+            <div className="phone">
+              <span className="screen">
+                <img src={screens[offset + index]} alt="" />
+                <span className="ic">{name === "instagram" ? <InstagramIcon /> : <TikTokIcon />}</span>
+                <span className="metric">
+                  <b>{metric.value}</b>
+                  <span>{metric.label}</span>
+                </span>
+              </span>
+              <span className="cap">{metric.cap}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }

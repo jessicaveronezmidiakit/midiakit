@@ -1,18 +1,21 @@
 import type { Metadata, Viewport } from "next";
-import { Bodoni_Moda, Manrope } from "next/font/google";
+import { Inter, Newsreader } from "next/font/google";
 import { contact, creator, totalFollowers } from "@/content/midia-kit";
 import "./globals.css";
 
-const bodoni = Bodoni_Moda({
-  variable: "--font-bodoni",
+const display = Newsreader({
+  variable: "--font-display",
   subsets: ["latin"],
   style: ["normal", "italic"],
-  axes: ["opsz"],
+  weight: ["400", "500"],
+  display: "swap",
 });
 
-const manrope = Manrope({
-  variable: "--font-manrope",
+const sans = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  display: "swap",
 });
 
 const title = "Jéssica Veronez · Mídia Kit";
@@ -82,7 +85,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="pt-BR" className={`${bodoni.variable} ${manrope.variable} antialiased`}>
+    <html lang="pt-BR" className={`${display.variable} ${sans.variable} antialiased`}>
       <body>{children}</body>
     </html>
   );
