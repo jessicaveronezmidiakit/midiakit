@@ -5,6 +5,8 @@ const photos = [
   { src: "/photos/jv-21.webp", x: "62%", y: "70%", w: "clamp(70px,8vw,120px)", r: "-12deg", d: ".95s" },
   { src: "/photos/jv-2.webp", x: "26%", y: "72%", w: "clamp(80px,10vw,140px)", r: "-6deg", d: "1.1s" },
   { src: "/photos/jv-14.webp", x: "40%", y: "-2%", w: "clamp(80px,9vw,130px)", r: "5deg", d: "1.2s" },
+  { src: "/photos/h-13.webp", x: "36%", y: "18%", w: "clamp(72px,10vw,120px)", r: "-6deg", d: "1.35s" },
+  { src: "/photos/h-4.webp", x: "68%", y: "21%", w: "clamp(72px,10vw,120px)", r: "8deg", d: "1.5s" },
 ];
 
 export function Intro() {
@@ -19,7 +21,6 @@ export function Intro() {
             <br />
             universo da
           </span>
-          <br />
           <em>
             Jéssica <br />
             Veronez
@@ -35,11 +36,6 @@ export function Intro() {
           <img src={photo.src} alt="" />
         </div>
       ))}
-      <div className="fly" style={{ ["--x" as string]: "77%", ["--y" as string]: "7%", ["--w" as string]: "clamp(70px,9vw,120px)", ["--r" as string]: "12deg", ["--d" as string]: ".5s" }}>
-        <svg viewBox="0 0 100 115" aria-hidden="true">
-          <use href="#bag-svg" />
-        </svg>
-      </div>
       <span className="intro-veil" />
       <button className="skip" type="button">
         role para entrar

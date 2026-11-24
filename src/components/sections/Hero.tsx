@@ -24,22 +24,22 @@ export function Hero() {
             {creator.city}
           </span>
           <span className="note n3" aria-hidden="true">
-            formada em imagem & estilo
             <Arrow flip="y" />
+            formada por consultora de imagem & estilo
           </span>
           <span className="bag-anchor" aria-hidden="true" />
         </div>
         <Stats className="stats-side" />
         </div>
         <div>
-          <p className="kicker">beleza · moda · lifestyle</p>
+          <p className="kicker">fashion · lifestyle · beauty</p>
           <p className="hi">
             Oi, eu sou a <span>Jéssica Veronez</span>
           </p>
           <h1>
             Criadora de conteúdo
             <br />
-            de beleza, moda <em>&amp;</em> lifestyle
+            Fashion, lifestyle <em>&amp;</em> beauty
           </h1>
           <p className="lead">
             Estilo com verdade: curadoria honesta de moda e beleza para mulheres que querem se sentir bem com quem são.

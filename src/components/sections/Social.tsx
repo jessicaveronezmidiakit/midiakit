@@ -35,7 +35,7 @@ export function Social() {
 
         <Network
           id="rede-instagram"
-          name="instagram"
+          name="Instagram"
           followers={social.instagram.followers}
           href={contact.instagram.url}
           handle={contact.instagram.handle}
@@ -44,7 +44,7 @@ export function Social() {
         />
         <Network
           id="rede-tiktok"
-          name="tiktok"
+          name="TikTok"
           followers={social.tiktok.followers}
           href={contact.tiktok.url}
           handle={contact.tiktok.handle}

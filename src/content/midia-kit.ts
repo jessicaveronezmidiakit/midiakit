@@ -9,13 +9,13 @@ export const creator = {
 };
 
 export function whatsappLink(message: string) {
-  return `https://wa.me/5541999013646?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/554199378510?text=${encodeURIComponent(message)}`;
 }
 
 export const contact = {
-  email: "jessicaveronez@outlook.com.br",
-  whatsappDisplay: "(41) 99901-3646",
-  whatsappNumber: "5541999013646",
+  email: "jessicaveronez.comercial@gmail.com",
+  whatsappDisplay: "(41) 9937-8510",
+  whatsappNumber: "554199378510",
   whatsappUrl: whatsappLink("Olá, Jéssica! Vi seu mídia kit e quero falar sobre uma parceria."),
   instagram: { handle: "@jessicaveronez", url: "https://www.instagram.com/jessicaveronez" },
   tiktok: { handle: "@veronezjessica", url: "https://www.tiktok.com/@veronezjessica" },
@@ -167,15 +167,17 @@ export const deliverables = [
 
 export const brands = [
   { name: "MAC", logo: "/marcas/mac.webp" },
-  { name: "Indulto Jeans", logo: "/marcas/indulto.webp" },
-  { name: "Gummy Original", logo: "/marcas/gummy.webp" },
-  { name: "Insider", logo: "/marcas/insider.webp" },
-  { name: "C&A", logo: "/marcas/cea.webp" },
   { name: "Toda Up", logo: "/marcas/toda-up.webp" },
+  { name: "C&A", logo: "/marcas/cea.webp" },
+  { name: "Insider", logo: "/marcas/insider.webp" },
+  { name: "Gummy Original", logo: "/marcas/gummy.webp" },
+  { name: "Indulto Jeans", logo: "/marcas/indulto.webp" },
   { name: "Lorizze", logo: "/marcas/lorizze.webp" },
   { name: "Contém1g", logo: "/marcas/contem1g.webp" },
-  { name: "Riachuelo", logo: "/marcas/riachuelo.webp" },
   { name: "Simple Organic", logo: "/marcas/simple.webp" },
+  { name: "Riachuelo", logo: "/marcas/riachuelo.webp" },
+  { name: "Medicube", logo: "/marcas/medicube.webp" },
+  { name: "Renner", logo: "/marcas/renner.webp" },
 ];
 
 export const measures = [

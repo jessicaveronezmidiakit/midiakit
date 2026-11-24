@@ -13,7 +13,14 @@ export function Band() {
   );
 }
 
+const reelLead = ["MAC", "Renner", "Medicube", "Toda Up", "C&A"];
+
 export function Brands() {
+  const reelBrands = [
+    ...reelLead.map((name) => brands.find((brand) => brand.name === name)!),
+    ...brands.filter((brand) => !reelLead.includes(brand.name)),
+  ];
+
   return (
     <section className="brands-scene" id="marcas" aria-label="Marcas que já confiaram">
       <div className="stage">
@@ -52,7 +59,7 @@ export function Brands() {
           ))}
         </div>
         <div className="reel" id="reel">
-          {brands.map((brand) => (
+          {reelBrands.map((brand) => (
             <div className="frame-cell" key={brand.name}>
               <img src={brand.logo} alt={brand.name} />
             </div>
